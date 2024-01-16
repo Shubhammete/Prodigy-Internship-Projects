@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1c1c1c;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #ff66b2;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+
+        input {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #ddd;
+        }
+
+        button {
+            background-color: #ff66b2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff3385;
+        }
+
+        #result {
+            font-size: 1.5em;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h2>Guess the Number</h2>
+        <div class="input-group">
+            <label for="guess">Your Guess:</label>
+            <input type="number" id="guess" placeholder="Enter your guess" />
+        </div>
+
+        <button onclick="submitGuess()">Submit Guess</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        let count = 0;
+        function submitGuess() {
+            const userGuess = document.getElementById('guess').value;
+            const compGuess = 23
+            count++
+            let diff = userGuess - compGuess
+            if(diff<10 && diff>-10 && diff!==0 ){
+                status = `Ahh Too Close`
+            }else if(diff === 0){
+                status = `Bingo!! <br>You got it in Attempts ${count}`
+            }else{
+                status = `Far long guess `
+            }            
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `${status}`;
+        }
+    </script>
+</body>
+</html>
